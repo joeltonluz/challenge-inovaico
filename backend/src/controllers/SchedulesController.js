@@ -24,6 +24,7 @@ module.exports = {
 
   async post(req, res) {
     await Schedule.post(req.body);
+    console.log('antes do post');
 
     return res.json([req.body]);
   },
