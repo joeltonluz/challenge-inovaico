@@ -18,7 +18,7 @@ routes.get('/patients/:id', PatientsController.show);
 routes.get('/patients/:id/edit', PatientsController.edit);
 routes.post('/patients',PatientsController.post);
 routes.put('/patients',PatientsController.put);
-routes.delete('/patients',PatientsController.delete);
+routes.delete('/patients/:id',PatientsController.delete);
 
 //Schedules
 routes.get('/schedules',SchedulesController.index);

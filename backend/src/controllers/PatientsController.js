@@ -11,10 +11,9 @@ module.exports = {
   },
 
   async index(req, res) {
-    const results = await Patient.all();
-    let allPatients = results.rows;
+    const results = await Patient.all();  
     
-    return res.json({allPatients});
+    return res.json(results.rows);
     //return res.send(`Quantidade de Pacientes: ${results.rows[0]}`);
   },
 
@@ -47,8 +46,18 @@ module.exports = {
   }, 
 
   async delete(req, res) {
-    await Patient.delete(req.headers.id);
+    const { id } = req.params;
 
-    return res.redirect('/');
+    let results = await Patient.existSchedule(id);
+
+    if (results.rows.length>0) {
+      return res.json({message: 'Esse paciente possui agendamentos, verifique !'}).status(400);
+    } else {
+      console.log(id);
+      await Patient.delete(id);
+
+      return res.json({message: ''});
+    }; 
+
   }
 };

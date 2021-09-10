@@ -76,10 +76,10 @@ module.exports = {
 
     return db.query(qry, values);
   },
-
-  delete(idPatient) {
-    const qry = `DELETE FROM patients WHERE ID = $1`;
-
-    return db.query(qry,[idPatient]);
+  existSchedule(id) {
+    return db.query('SELECT * FROM schedules WHERE id_patient = $1',[id]);
+  },
+  delete(id) {   
+    return db.query('DELETE FROM patients WHERE ID = $1',[id]);
   }
 }
