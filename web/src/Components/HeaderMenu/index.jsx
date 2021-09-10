@@ -1,12 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Cabecalho () {
+import { HeaderDiv, HeaderUl, HeaderLi } from './styles';
+import logo from './../../styles/logo.jpg';
+
+function HeaderMenu (props) {
   return (
     <>
-      <a href="http://google.com.br"> Pacientes </a>
-      <a href="http://google.com.br"> Agendamentos </a>
+      <HeaderDiv>
+        <img src={logo} alt={'logo'}/>
+        <h2>Desafio para Programador !!</h2>
+      </HeaderDiv>
+      
+      <HeaderUl> 
+        <HeaderLi>
+          <Link style={{textDecoration: 'none', color: 'white', fontWeight: (props.page==='inicio' ? 800 : 400)}} to="/">Início</Link>
+        </HeaderLi>
+
+        <HeaderLi>
+          <Link style={{textDecoration: 'none', color: 'white', fontWeight: (props.page==='patients' ? 800 : 400)}} to="/patients">Pacientes</Link>
+        </HeaderLi>
+
+        <HeaderLi>
+          <Link style={{textDecoration: 'none', color: 'white', fontWeight: (props.page==='schedules' ? 800 : 400)}} to="/schedules">Agendamento</Link>
+        </HeaderLi>
+      </HeaderUl>     
     </>
   )
 }
 
-export default Cabecalho;
+export default HeaderMenu;

@@ -1,12 +1,12 @@
 import React from 'react';
 
+import HeaderMenu from '../../components/HeaderMenu';
 
+import './styles';
 
 function Main() {
   return (
-
-    <h1>Página Inicial</h1>
-
+    <HeaderMenu page="inicio" />
   )
 }
 
